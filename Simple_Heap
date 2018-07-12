@@ -1,0 +1,64 @@
+import java.util.Scanner;
+public class Simple_Heap
+{
+	int []a;      //array
+	 int count=0;   //Number of element in heap
+	 int capacity;   //size of heap
+	 Simple_Heap(int []a,int count,int capacity)
+	 {
+	 	this.a=a;
+	 	this.count=count;
+	 	this.capacity=capacity;
+	 }
+ int parent(int i)
+  {
+  	if(i<0||i>count)
+  		return -1;
+  	return (i-1)/2;
+  }
+ int leftChild(int i)
+  {
+  	if(i<0||i>count)
+  		return -1;
+  	return (2*i+1);
+  }
+  int rightChild(int i)
+  {
+  	if(i<0||i>count)
+  		return -1;
+  	return (2*i+2);
+  }
+  int getMin()
+  {
+  	if(count==0)
+  		return -1;
+  	return a[0];
+  }
+
+   public static void main(String[] args) {
+   	
+   	int []a={1,2,3,4,5,6};
+
+Simple_Heap hp=new Simple_Heap(a,a.length,a.length);
+Scanner sc=new Scanner(System.in);
+for(int i=0;i<a.length;i++)
+{
+	System.out.print(a[i]+" ");
+   }
+   System.out.print("\nEnter Index for getting parrent Node ");
+   int i=sc.nextInt();
+  System.out.println(a[hp.parent(i)]);
+  System.out.print("\nEnter Index for Left Child Node ");
+    i=sc.nextInt();
+   System.out.println(a[hp.leftChild(i)]);
+   System.out.print("\nEnter Index for Rightt Child Node ");
+    i=sc.nextInt();
+   System.out.println(a[hp.rightChild(i)]);
+   System.out.print("\nMinimum element in heap ");
+  // int i=sc.nextInt();
+   System.out.println(hp.getMin());
+ 
+}
+
+
+}
