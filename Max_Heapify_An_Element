@@ -1,0 +1,70 @@
+import java.util.Scanner;
+public class Heapify_An_Element
+{
+	int []a;      //array
+	 int count=0;   //Number of element in heap
+	 int capacity;   //size of heap
+	 Heapify_An_Element(int []a,int count,int capacity)
+	 {
+	 	this.a=a;
+	 	this.count=count;
+	 	this.capacity=capacity;
+	 }
+ 
+ int parent(int i)
+  {
+  	if(i<0||i>count)
+  		return -1;
+  	return (i-1)/2;
+  }
+ int leftChild(int i)
+  {
+  	if(i<0||i>count)
+  		return -1;
+  	return (2*i+1);
+  }
+ int rightChild(int i)
+  {
+  	if(i<0||i>count)
+  		return -1;
+  	return (2*i+2);
+  }
+  
+  void pericolateDown(int i)
+  {
+    Heapify_An_Element hp=new Heapify_An_Element(a,a.length,a.length);
+    int l,r,max,temp;
+    l=hp.leftChild(i);
+    r=hp.rightChild(i);
+    if(l!=-1&&a[l]>a[i])
+      max=l;
+    else
+      max=i;
+    if(r!=-1&&a[r]>a[max])
+      max=r;
+    if(max!=i)
+    {
+      temp=a[i];
+      a[i]=a[max];
+      a[max]=temp;
+     // pericolateDown(max);
+    }
+
+  }
+
+   public static void main(String[] args) {
+   	
+   	int []a={1,2,3,4,5,6};
+Scanner sc=new Scanner(System.in);
+Heapify_An_Element hp=new Heapify_An_Element(a,a.length,a.length);
+for(int i=0;i<a.length;i++)
+System.out.print(a[i]+" ");
+int i=sc.nextInt();
+hp.pericolateDown(i);
+System.out.println("After Heapify");
+for( i=0;i<a.length;i++)
+System.out.print(a[i]+" ");
+
+//Scanner sc=new Scanner(System.in);
+}
+}
